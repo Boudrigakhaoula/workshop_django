@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}Créer une conférence{% endblock %}
+
+{% block content %}
+
+<div class="card shadow-sm p-4">
+    <h3 class="mb-3 fw-bold">➕ Créer une conférence</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">Titre</label>
+                <input type="text" name="title" class="form-control" required>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Thème</label>
+                <select name="theme" class="form-select">
+                    <option value="AI">AI</option>
+                    <option value="ENG">Engineering</option>
+                    <option value="SOC">Social Sciences</option>
+                    <option value="INT">Interdisciplinary</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">Lieu</label>
+                <input type="text" name="location" class="form-control" required>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Localisation</label>
+                <input type="text" name="place" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">Date début</label>
+                <input type="date" name="start_date" class="form-control" required>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Date fin</label>
+                <input type="date" name="end_date" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea name="description" rows="4" class="form-control"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Créer</button>
+        <a href="{% url 'conference_list' %}" class="btn btn-secondary">Annuler</a>
+    </form>
+</div>
+
+{% endblock %}

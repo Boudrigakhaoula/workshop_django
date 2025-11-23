@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Liste des conférences{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">📅 Liste des conférences</h2>
+    <a href="{% url 'conference_create' %}" class="btn btn-success">
+        ➕ Ajouter une conférence
+    </a>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead class="table-primary">
+                <tr>
+                    <th>Titre</th>
+                    <th>Thème</th>
+                    <th>Lieu</th>
+                    <th style="width: 200px;">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for c in conferences %}
+                <tr>
+                    <td>{{ c.title }}</td>
+                    <td>{{ c.get_theme_display }}</td>
+                    <td>{{ c.location }}</td>
+                    <td>
+                        <a href="{% url 'conference_detail' c.id %}" class="btn btn-sm btn-info text-white">Voir</a>
+                        <a href="{% url 'conference_update' c.id %}" class="btn btn-sm btn-warning">Modifier</a>
+                        <a href="{% url 'conference_delete' c.id %}" class="btn btn-sm btn-danger">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+{% endblock %}

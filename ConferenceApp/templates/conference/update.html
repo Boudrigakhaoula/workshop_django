@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Modifier conférence{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm p-4">
+
+    <h3 class="fw-bold mb-3">✏️ Modifier la conférence</h3>
+
+    <form method="POST">
+        {% csrf_token %}
+        
+        <label class="form-label">Titre</label>
+        <input class="form-control mb-3" type="text" name="title" value="{{ conference.title }}">
+
+        <label class="form-label">Lieu</label>
+        <input class="form-control mb-3" type="text" name="location" value="{{ conference.location }}">
+
+        <label class="form-label">Description</label>
+        <textarea class="form-control mb-3" name="description">{{ conference.description }}</textarea>
+
+        <button class="btn btn-primary" type="submit">Enregistrer</button>
+        <a href="{% url 'conference_list' %}" class="btn btn-secondary">Annuler</a>
+    </form>
+</div>
+{% endblock %}

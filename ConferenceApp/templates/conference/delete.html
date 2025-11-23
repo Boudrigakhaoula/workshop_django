@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Supprimer conférence{% endblock %}
+
+{% block content %}
+
+<div class="alert alert-danger p-4 shadow-sm">
+    <h4>⚠️ Confirmation</h4>
+    <p>Voulez-vous vraiment supprimer <strong>{{ conference.title }}</strong> ?</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button class="btn btn-danger">Supprimer</button>
+        <a href="{% url 'conference_list' %}" class="btn btn-secondary">Annuler</a>
+    </form>
+</div>
+
+{% endblock %}
