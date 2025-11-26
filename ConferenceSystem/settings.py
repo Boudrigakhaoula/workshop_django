@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'ConferenceApp.apps.ConferenceappConfig',
     'SessionApp.apps.SessionappConfig',
 ]
-
+AUTH_USER_MODEL = "UserApp.User"
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -54,7 +54,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'ConferenceSystem.urls'
 ####
-AUTH_USER_MODEL = "UserApp.User"
+
 
 TEMPLATES = [
     {
